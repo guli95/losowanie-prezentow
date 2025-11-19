@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Losowanie Prezentów Świątecznych</title>
 <style>
-/* Stylowanie zgodne z Twoim poprzednim projektem */
 body {
   font-family: 'Arial', sans-serif;
   background: linear-gradient(to bottom right, #18314f 70%, #e53935 100%);
@@ -154,6 +153,31 @@ button:hover {
   animation: blink 1.45s infinite alternate;
 }
 @keyframes blink { 100% { opacity: 0.45; }}
+
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+  .person-photo {
+    width: 70px;
+    height: 70px;
+  }
+  .person-label {
+    font-size: 14px;
+  }
+  select, button {
+    font-size: 17px;
+    padding: 8px 16px;
+  }
+  .receiver-photo {
+    width: 180px;
+    height: 180px;
+  }
+  .big-xmas-img {
+    width: 100%;
+    border-width: 5px;
+  }
+}
 </style>
 </head>
 <body>
@@ -187,6 +211,15 @@ button:hover {
 
 <div id="resultArea" class="result" style="display:none;"></div>
 
+<button id="musicToggle" style="font-size:18px; padding:8px 16px; background:#ff6f00; color:white; border:none; border-radius:8px; cursor:pointer; margin-top: 12px;">
+  Włącz muzykę
+</button>
+
+<audio id="bg-music" loop>
+  <source src="img/muzyka.mp3" type="audio/mpeg" />
+  Twoja przeglądarka nie obsługuje odtwarzania audio.
+</audio>
+
 <script>
   const PARTICIPANTS = [
     {name: 'Paulina', file: 'img/pauilina.jpg'},
@@ -217,51 +250,6 @@ button:hover {
     'Julia': 'Patrycja',
     'Pioterek': 'Maki'
   };
-
-  /*
-  // Funkcje losujące są zakomentowane, nie używane:
-
-  function isValidPermutation(permutation, names, exclusions){
-    for(let i=0; i<names.length; i++){
-      let giver = names[i];
-      let receiver = permutation[i];
-      if(giver === receiver) return false;
-      if(exclusions[giver] && exclusions[giver].includes(receiver)) return false;
-      let j = names.indexOf(receiver);
-      if(permutation[j] === giver) return false;
-    }
-    const uniqueReceivers = new Set(permutation);
-    return uniqueReceivers.size === names.length;
-  }
-
-  function generateAssignments(){
-    const names = PARTICIPANTS.map(p => p.name);
-    let tries = 0;
-    let permutation;
-    do {
-      permutation = shuffleArray(names);
-      tries++;
-      if(tries>5000){
-        alert('Nie udało się wygenerować poprawnego losowania. Odśwież stronę i spróbuj jeszcze raz.');
-        return {};
-      }
-    } while(!isValidPermutation(permutation, names, exclusions));
-    let result = {};
-    for(let i=0; i<names.length; i++){
-      result[names[i]] = permutation[i];
-    }
-    return result;
-  }
-
-  function shuffleArray(array){
-    let a = array.slice();
-    for(let i=a.length-1;i>0;i--){
-      let j = Math.floor(Math.random()* (i+1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-  }
-  */
 
   // zdjęcia pod tytułem
   const allPhotosDiv = document.getElementById('all-photos');
@@ -312,16 +300,36 @@ button:hover {
     // zmniejsz zdjęcie Makłowicza
     document.getElementById('maklowicz').classList.add('small');
   }
-</script>
 
-<audio id="bg-music" autoplay loop>
-  <source src="img/muzyka.mp3" type="audio/mpeg" />
-  Twoja przeglądarka nie obsługuje odtwarzania audio.
-</audio>
-
-<script>
   const music = document.getElementById('bg-music');
-  music.volume = 0.1;
+  const musicToggle = document.getElementById('musicToggle');
+
+  // Sprawdź, czy to urządzenie mobilne (prosta detekcja)
+  const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+
+  if (!isMobile) {
+    // Na desktopach muzyka startuje automatycznie, po załadowaniu strony
+    music.volume = 0.1;
+    music.play().catch(() => {
+      // W razie blokady autoplay bez interakcji, nic nie robimy
+    });
+    musicToggle.textContent = "Wyłącz muzykę";
+  } else {
+    // Na urządzeniach mobilnych muzyka jest wyciszona i zatrzymana
+    music.volume = 0.1;
+    music.pause();
+    musicToggle.textContent = "Włącz muzykę";
+  }
+
+  musicToggle.addEventListener('click', () => {
+    if (music.paused) {
+      music.play();
+      musicToggle.textContent = "Wyłącz muzykę";
+    } else {
+      music.pause();
+      musicToggle.textContent = "Włącz muzykę";
+    }
+  });
 </script>
 
 </body>
