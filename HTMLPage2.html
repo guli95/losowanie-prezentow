@@ -188,38 +188,79 @@ button:hover {
 
 <script>
   const PARTICIPANTS = [
-    {name: 'Papryk', file: 'img/papryk.jpg'},
-    {name: 'Aluta', file: 'img/aluta.jpg'},
+    {name: 'Paulina', file: 'img/pauilina.jpg'},
+    {name: 'Domi', file: 'img/domi.jpg'},
     {name: 'Aga', file: 'img/aga.jpg'},
     {name: 'Szymon', file: 'img/Szymon.jpg'},
     {name: 'Pawulon', file: 'img/pawulon.jpg'},
-    {name: 'Paulina', file: 'img/pauilina.jpg'},
+    {name: 'Papryk', file: 'img/papryk.jpg'},
     {name: 'Patrycja', file: 'img/patrycja.jpg'},
     {name: 'Maki', file: 'img/maki.jpg'},
     {name: 'Filip', file: 'img/filip.jpg'},
-    {name: 'Domi', file: 'img/domi.jpg'},
+    {name: 'Aluta', file: 'img/aluta.jpg'},
     {name: 'Julia', file: 'img/julia.jpg'},
     {name: 'Pioterek', file: 'img/pioterek.jpg'}
   ];
 
-  // Twardo przypisane pary z losowania (przykład prawidłowej permutacji bez par zwrotnych)
-// Twardo przypisane nowe pary prezentowe
-const assignments = {
-  'Paulina': 'Julia',
-  'Domi': 'Pioterek',
-  'Aga': 'Paulina',
-  'Szymon': 'Filip',
-  'Pawulon': 'Aluta',
-  'Papryk': 'Pawulon',
-  'Patrycja': 'Aga',
-  'Maki': 'Szymon',
-  'Filip': 'Papryk',
-  'Aluta': 'Domi',
-  'Julia': 'Patrycja',
-  'Pioterek': 'Maki'
-};
+  const assignments = {
+    'Paulina': 'Julia',
+    'Domi': 'Pioterek',
+    'Aga': 'Paulina',
+    'Szymon': 'Filip',
+    'Pawulon': 'Aluta',
+    'Papryk': 'Pawulon',
+    'Patrycja': 'Aga',
+    'Maki': 'Szymon',
+    'Filip': 'Papryk',
+    'Aluta': 'Domi',
+    'Julia': 'Patrycja',
+    'Pioterek': 'Maki'
+  };
 
+  /*
+// Zakomentowane funkcje losujące (nie są używane)
 
+  function isValidPermutation(permutation, names, exclusions){
+    for(let i=0; i<names.length; i++){
+      let giver = names[i];
+      let receiver = permutation[i];
+      if(giver === receiver) return false;
+      if(exclusions[giver] && exclusions[giver].includes(receiver)) return false;
+      let j = names.indexOf(receiver);
+      if(permutation[j] === giver) return false;
+    }
+    const uniqueReceivers = new Set(permutation);
+    return uniqueReceivers.size === names.length;
+  }
+
+  function generateAssignments(){
+    const names = PARTICIPANTS.map(p => p.name);
+    let tries = 0;
+    let permutation;
+    do {
+      permutation = shuffleArray(names);
+      tries++;
+      if(tries>5000){
+        alert('Nie udało się wygenerować poprawnego losowania. Odśwież stronę i spróbuj jeszcze raz.');
+        return {};
+      }
+    } while(!isValidPermutation(permutation, names, exclusions));
+    let result = {};
+    for(let i=0; i<names.length; i++){
+      result[names[i]] = permutation[i];
+    }
+    return result;
+  }
+
+  function shuffleArray(array){
+    let a = array.slice();
+    for(let i=a.length-1;i>0;i--){
+      let j = Math.floor(Math.random()* (i+1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+*/
 
   // zdjęcia pod tytułem
   const allPhotosDiv = document.getElementById('all-photos');
