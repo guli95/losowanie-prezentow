@@ -218,7 +218,7 @@ button:hover {
   };
 
   /*
-// Zakomentowane funkcje losujące (nie są używane)
+// 
 
   function isValidPermutation(permutation, names, exclusions){
     for(let i=0; i<names.length; i++){
@@ -286,13 +286,21 @@ button:hover {
     whoSelect.appendChild(opt);
   });
 
-  // funkcja pokazująca wynik
+   // funkcja pokazująca wynik
+
   function showReceiver(){
-    const giver = whoSelect.value;
-    if(!giver){
-      alert('Wybierz swoje imię!');
-      return;
-    }
+  const giver = whoSelect.value;
+  console.log('Wybrany dający:', giver);
+  console.log('Przypisany odbiorca:', assignments[giver]);
+  if(!giver){
+    alert('Wybierz swoje imię!');
+    return;
+  }
+  const receiverName = assignments[giver];
+  ...
+}
+ 
+
     const receiverName = assignments[giver];
     const receiverObj = PARTICIPANTS.find(p => p.name === receiverName);
     let out = `<h2>${giver}, kupujesz prezent dla:</h2>`;
@@ -312,6 +320,14 @@ button:hover {
     document.getElementById('maklowicz').classList.add('small');
   }
 </script>
+<audio id="bg-music" autoplay loop>
+  <source src="img/muzyka.mp3" type="audio/mpeg" />
+  Twoja przeglądarka nie obsługuje odtwarzania audio.
+</audio>
 
+<script>
+  const music = document.getElementById('bg-music');
+  music.volume = 0.1;
+</script>
 </body>
 </html>
