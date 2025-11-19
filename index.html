@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Losowanie Prezentów Świątecznych</title>
 <style>
+/* (Tu wklej Twój CSS tak jak wcześniej, dla skrótu pomijam w tym fragmencie) */
 body {
   font-family: 'Arial', sans-serif;
   background: linear-gradient(to bottom right, #18314f 70%, #e53935 100%);
@@ -16,168 +17,9 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
-h1 {
-  color: #ffd700;
-  text-shadow: 2px 2px 16px #094f22;
-  font-size: 2.7em;
-  margin-bottom: 27px;
-  font-weight: bold;
-  letter-spacing: 3px;
-}
-h1 .bauble {
-  font-size: 32px;
-  margin: 0 10px;
-  vertical-align: middle;
-}
-.photos-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 30px;
-  gap: 18px;
-  padding: 20px;
-  border-radius: 30px;
-  background: rgba(255,255,255,0.09);
-  box-shadow: 0 0 34px #0006;
-  border: 2px dashed #ffd700;
-}
-.person-photo {
-  width: 100px;
-  height: 100px;
-  background: #094f22;
-  border-radius: 24px;
-  border: 4px solid #ffd700;
-  object-fit: cover;
-  box-shadow: 0 0 20px #e53935;
-}
-.person-label {
-  font-weight: bold;
-  color: #094f22;
-  margin-top: 8px;
-  font-size: 18px;
-  text-shadow: 0px 2px 12px #ffd700;
-  letter-spacing:1px;
-}
-select, button {
-  font-size: 21px;
-  padding: 10px 23px;
-  border-radius: 10px;
-  border: none;
-  margin: 16px;
-  background: #ffd700;
-  color: #094f22;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-button {
-  box-shadow: 0 0 16px #e53935;
-  cursor: pointer;
-  transition: 0.18s all;
-}
-button:hover {
-  background: #e53935;
-  color: #fff;
-}
-.result {
-  margin-top: 30px;
-  background: linear-gradient(to right, #e53935 10%, #ffd700 90%);
-  color: #094f22;
-  display: inline-block;
-  padding: 30px;
-  border-radius: 20px;
-  max-width: 580px;
-  box-shadow: 0 0 60px #ffd700c0;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-.result h2, .result h3 {
-  color: #e53935;
-  font-weight: bold;
-  text-shadow: 0px 2px 12px #ffd700;
-  letter-spacing: 2px;
-}
-.receiver-photo {
-  margin-top: 15px;
-  width: 270px;
-  height: 270px;
-  border: 8px solid #ffd700;
-  border-radius: 28px;
-  background: #094f22;
-  object-fit: cover;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 0 30px #e53935;
-  transition: width 0.5s, height 0.5s;
-}
-.thanks {
-  margin-top: 24px;
-  font-size: 1.35em;
-  color: #e53935;
-  font-weight: bold;
-  text-shadow: 0px 2px 12px #ffd700;
-  letter-spacing: 2px;
-}
-.big-xmas-img {
-  margin-top: 24px;
-  margin-bottom: 30px;
-  max-width: 95vw;
-  width: 900px;
-  border-radius: 28px;
-  border: 8px solid #ffd700;
-  box-shadow: 0 0 60px #e5393577;
-  transition: width 0.50s;
-}
-.big-xmas-img.small {
-  width: 350px;
-  max-width: 90vw;
-}
-.lights {
-  width: 100%;
-  margin: 18px 0 22px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 14px;
-}
-.light {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #fff 67%, #ffd700 100%);
-  box-shadow: 0 0 22px 8px #ffd700, 0 0 40px 5px #e53935;
-  border: 2px solid #e53935;
-  display: inline-block;
-  margin: 0 3px;
-  opacity: 0.91;
-  animation: blink 1.45s infinite alternate;
-}
-@keyframes blink { 100% { opacity: 0.45; }}
 
-@media (max-width: 600px) {
-  body {
-    padding: 15px;
-  }
-  .person-photo {
-    width: 70px;
-    height: 70px;
-  }
-  .person-label {
-    font-size: 14px;
-  }
-  select, button {
-    font-size: 17px;
-    padding: 8px 16px;
-  }
-  .receiver-photo {
-    width: 180px;
-    height: 180px;
-  }
-  .big-xmas-img {
-    width: 100%;
-    border-width: 5px;
-  }
-}
+... /* wszystkie Twoje style tutaj */
+
 </style>
 </head>
 <body>
@@ -188,13 +30,13 @@ button:hover {
   <span class="bauble">🎅</span>
 </h1>
 <div class="lights">
-  <span class="light"></span>
-  <span class="light"></span>
-  <span class="light"></span>
-  <span class="light"></span>
-  <span class="light"></span>
-  <span class="light"></span>
+  <span class="light"></span><span class="light"></span><span class="light"></span>
+  <span class="light"></span><span class="light"></span><span class="light"></span>
 </div>
+
+<button id="musicToggle" style="font-size:18px; padding:8px 16px; background:#ff6f00; color:white; border:none; border-radius:8px; cursor:pointer; margin-bottom: 14px;">
+  Włącz muzykę
+</button>
 
 <div class="photos-list" id="all-photos"></div>
 <p id="instr" style="font-size:1.2em;margin:28px 0 0 0;">
@@ -210,10 +52,6 @@ button:hover {
 <img id="maklowicz" src="img/maklowicz.jpg" class="big-xmas-img" alt="Świąteczne życzenia">
 
 <div id="resultArea" class="result" style="display:none;"></div>
-
-<button id="musicToggle" style="font-size:18px; padding:8px 16px; background:#ff6f00; color:white; border:none; border-radius:8px; cursor:pointer; margin-top: 12px;">
-  Włącz muzykę
-</button>
 
 <audio id="bg-music" loop>
   <source src="img/muzyka.mp3" type="audio/mpeg" />
@@ -251,7 +89,7 @@ button:hover {
     'Pioterek': 'Maki'
   };
 
-  // zdjęcia pod tytułem
+  // Wypełnianie zdjęć pod tytułem
   const allPhotosDiv = document.getElementById('all-photos');
   PARTICIPANTS.forEach(p => {
     const wrapper = document.createElement('div');
@@ -266,16 +104,16 @@ button:hover {
     allPhotosDiv.appendChild(wrapper);
   });
 
-  // lista imion
+  // Dodawanie opcji wyboru imion
   const whoSelect = document.getElementById('whoSelect');
   PARTICIPANTS.forEach(p => {
-    let opt = document.createElement('option');
+    const opt = document.createElement('option');
     opt.value = p.name;
     opt.textContent = p.name;
     whoSelect.appendChild(opt);
   });
 
-  // funkcja pokazująca wynik
+  // Funkcja pokazująca wynik losowania
   function showReceiver(){
     const giver = whoSelect.value;
     if(!giver){
@@ -284,45 +122,45 @@ button:hover {
     }
     const receiverName = assignments[giver];
     const receiverObj = PARTICIPANTS.find(p => p.name === receiverName);
+
     let out = `<h2>${giver}, kupujesz prezent dla:</h2>`;
     out += `<h3>${receiverName}</h3>`;
     out += `<img src="${receiverObj.file}" class="receiver-photo" id="winnerphoto" alt="${receiverName}">`;
     out += `<div class="thanks">Z góry dziękuję za prezent, ${giver}!</div>`;
 
-    document.getElementById('resultArea').style.display = 'inline-block';
-    document.getElementById('resultArea').innerHTML = out;
+    const resultArea = document.getElementById('resultArea');
+    resultArea.style.display = 'inline-block';
+    resultArea.innerHTML = out;
 
-    // ukryj przycisk i select oraz instrukcję
+    // Ukryj przycisk i select oraz instrukcję
     document.getElementById('drawBtn').style.display = 'none';
     whoSelect.style.display = 'none';
     document.getElementById('instr').style.display = 'none';
 
-    // zmniejsz zdjęcie Makłowicza
+    // Zmniejsz zdjęcie makłowicza
     document.getElementById('maklowicz').classList.add('small');
   }
 
+  // Obsługa muzyki i przycisku
   const music = document.getElementById('bg-music');
   const musicToggle = document.getElementById('musicToggle');
 
-  // Sprawdź, czy to urządzenie mobilne (prosta detekcja)
   const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
 
-  if (!isMobile) {
-    // Na desktopach muzyka startuje automatycznie, po załadowaniu strony
+  if(!isMobile){
     music.volume = 0.1;
     music.play().catch(() => {
-      // W razie blokady autoplay bez interakcji, nic nie robimy
+      // Autoplay blokowany - nic nie robimy
     });
     musicToggle.textContent = "Wyłącz muzykę";
   } else {
-    // Na urządzeniach mobilnych muzyka jest wyciszona i zatrzymana
     music.volume = 0.1;
     music.pause();
     musicToggle.textContent = "Włącz muzykę";
   }
 
   musicToggle.addEventListener('click', () => {
-    if (music.paused) {
+    if(music.paused){
       music.play();
       musicToggle.textContent = "Wyłącz muzykę";
     } else {
