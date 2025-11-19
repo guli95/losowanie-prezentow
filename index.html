@@ -188,35 +188,79 @@ button:hover {
 
 <script>
   const PARTICIPANTS = [
-    {name: 'Papryk', file: 'img/papryk.jpg'},
-    {name: 'Aluta', file: 'img/aluta.jpg'},
+    {name: 'Paulina', file: 'img/pauilina.jpg'},
+    {name: 'Domi', file: 'img/domi.jpg'},
     {name: 'Aga', file: 'img/aga.jpg'},
     {name: 'Szymon', file: 'img/Szymon.jpg'},
     {name: 'Pawulon', file: 'img/pawulon.jpg'},
-    {name: 'Paulina', file: 'img/pauilina.jpg'},
+    {name: 'Papryk', file: 'img/papryk.jpg'},
     {name: 'Patrycja', file: 'img/patrycja.jpg'},
     {name: 'Maki', file: 'img/maki.jpg'},
     {name: 'Filip', file: 'img/filip.jpg'},
-    {name: 'Domi', file: 'img/domi.jpg'},
+    {name: 'Aluta', file: 'img/aluta.jpg'},
     {name: 'Julia', file: 'img/julia.jpg'},
     {name: 'Pioterek', file: 'img/pioterek.jpg'}
   ];
 
-  // Twardo przypisane pary z losowania (przykład prawidłowej permutacji bez par zwrotnych)
   const assignments = {
-    'Papryk': 'Aga',
-    'Aluta': 'Szymon',
-    'Aga': 'Filip',
-    'Szymon': 'Julia',
-    'Pawulon': 'Patrycja',
-    'Paulina': 'Domi',
-    'Patrycja': 'Paulina',
-    'Maki': 'Aluta',
-    'Filip': 'Papryk',
+    'Paulina': 'Julia',
     'Domi': 'Pioterek',
-    'Julia': 'Maki',
-    'Pioterek': 'Pawulon'
+    'Aga': 'Paulina',
+    'Szymon': 'Filip',
+    'Pawulon': 'Aluta',
+    'Papryk': 'Pawulon',
+    'Patrycja': 'Aga',
+    'Maki': 'Szymon',
+    'Filip': 'Papryk',
+    'Aluta': 'Domi',
+    'Julia': 'Patrycja',
+    'Pioterek': 'Maki'
   };
+
+  /*
+// 
+
+  function isValidPermutation(permutation, names, exclusions){
+    for(let i=0; i<names.length; i++){
+      let giver = names[i];
+      let receiver = permutation[i];
+      if(giver === receiver) return false;
+      if(exclusions[giver] && exclusions[giver].includes(receiver)) return false;
+      let j = names.indexOf(receiver);
+      if(permutation[j] === giver) return false;
+    }
+    const uniqueReceivers = new Set(permutation);
+    return uniqueReceivers.size === names.length;
+  }
+
+  function generateAssignments(){
+    const names = PARTICIPANTS.map(p => p.name);
+    let tries = 0;
+    let permutation;
+    do {
+      permutation = shuffleArray(names);
+      tries++;
+      if(tries>5000){
+        alert('Nie udało się wygenerować poprawnego losowania. Odśwież stronę i spróbuj jeszcze raz.');
+        return {};
+      }
+    } while(!isValidPermutation(permutation, names, exclusions));
+    let result = {};
+    for(let i=0; i<names.length; i++){
+      result[names[i]] = permutation[i];
+    }
+    return result;
+  }
+
+  function shuffleArray(array){
+    let a = array.slice();
+    for(let i=a.length-1;i>0;i--){
+      let j = Math.floor(Math.random()* (i+1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+*/
 
   // zdjęcia pod tytułem
   const allPhotosDiv = document.getElementById('all-photos');
@@ -242,13 +286,21 @@ button:hover {
     whoSelect.appendChild(opt);
   });
 
-  // funkcja pokazująca wynik
+   // funkcja pokazująca wynik
+
   function showReceiver(){
-    const giver = whoSelect.value;
-    if(!giver){
-      alert('Wybierz swoje imię!');
-      return;
-    }
+  const giver = whoSelect.value;
+  console.log('Wybrany dający:', giver);
+  console.log('Przypisany odbiorca:', assignments[giver]);
+  if(!giver){
+    alert('Wybierz swoje imię!');
+    return;
+  }
+  const receiverName = assignments[giver];
+  ...
+}
+ 
+
     const receiverName = assignments[giver];
     const receiverObj = PARTICIPANTS.find(p => p.name === receiverName);
     let out = `<h2>${giver}, kupujesz prezent dla:</h2>`;
@@ -268,6 +320,14 @@ button:hover {
     document.getElementById('maklowicz').classList.add('small');
   }
 </script>
+<audio id="bg-music" autoplay loop>
+  <source src="img/muzyka.mp3" type="audio/mpeg" />
+  Twoja przeglądarka nie obsługuje odtwarzania audio.
+</audio>
 
+<script>
+  const music = document.getElementById('bg-music');
+  music.volume = 0.1;
+</script>
 </body>
 </html>
